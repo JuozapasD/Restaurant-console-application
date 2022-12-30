@@ -1,0 +1,22 @@
+  [
+    {
+      "Name": "CocaCola 0.5",
+      "Price": 1.50,
+      "Id": 1
+    },
+    {
+      "Name": "Pepsi 0.5",
+      "Price": 1.50,
+      "Id": 2
+    },
+    {
+      "Name": "Sprite 0.5",
+      "Price": 1.50,
+      "Id": 3
+    },
+    {
+      "Name": "Vilnelė 0.5",
+      "Price": 2.50,
+      "Id": 4
+    }
+  ]

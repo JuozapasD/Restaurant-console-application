@@ -1,0 +1,22 @@
+[
+  {
+    "TableName": 1,
+    "IsOccupied": false,
+    "TableSize": 2
+  },
+  {
+    "TableName": 2,
+    "IsOccupied": false,
+    "TableSize": 2
+  },
+  {
+    "TableName": 3,
+    "IsOccupied": false,
+    "TableSize": 4
+  },
+  {
+    "TableName": 4,
+    "IsOccupied": false,
+    "TableSize": 6
+  }
+]

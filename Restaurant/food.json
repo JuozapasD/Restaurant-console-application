@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Pica su grybais",
+    "Price": 10.50,
+    "Id":  1
+  },
+  {
+    "Name": "Pica su ananasais",
+    "Price": 9.50,
+    "Id": 2
+  },
+  {
+    "Name": "Kebabas lėkštėje",
+    "Price": 5.50,
+    "Id": 3
+  },
+  {
+    "Name": "Kebabas lavaše",
+    "Price": 4.50,
+    "Id": 4
+  }
+]
