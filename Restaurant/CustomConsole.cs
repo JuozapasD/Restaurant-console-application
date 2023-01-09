@@ -8,6 +8,7 @@ namespace Restaurant
 {
     public class CustomConsole : IConsole
     {
+        
         public string ReadLine()
         {
            return Console.ReadLine();

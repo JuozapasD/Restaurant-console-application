@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -37,16 +39,20 @@ namespace Restaurant
 
         }
 
-       
-        //public void PrintReceipt()
-        //{
-        //    Console.WriteLine("Receipt:");
-        //    foreach (Order item in items)
-        //    {
-        //        Console.WriteLine($"{item.Name}: {item.Price:C}");
-        //    }
-        //    Console.WriteLine($"Total: {Total:C}");
-        //}
+ 
 
+
+           public bool IsValidEmail()
+           {
+            
+            Console.WriteLine("Iveskite savo el. pasto adresa jei norite ceki gauti el. pastu. Kitu atveju spauskite X");
+                    var emailInput = Console.ReadLine();
+                    string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
+
+                    return Regex.IsMatch(emailInput, regex, RegexOptions.IgnoreCase);
+            // sita regex radau internete, pasirode paprasciausias budas patikrinti ar tikrai ivede email adresa
+
+
+           }
+     }
     }
-}

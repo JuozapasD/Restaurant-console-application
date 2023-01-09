@@ -12,11 +12,10 @@ namespace Restaurant
         public static IConsole _console = new CustomConsole();
         static void Main(string[] args)
         {
-
             _drinks = ReadDrinkData("C:\\Users\\deiwu\\source\\repos\\Restaurant\\Restaurant/drinks.json");
             _food = ReadFoodData("C:\\Users\\deiwu\\source\\repos\\Restaurant\\Restaurant/food.json");
             _tables = ReadTableData("./staliukai.json");
-            Console.WriteLine("Kokio dydzio staliuko noretumete? Pasirinkite 2, 4 arba 6 vietų staliuką");
+            _console.WriteLine("Kokio dydzio staliuko noretumete? Pasirinkite 2, 4 arba 6 vietų staliuką");
             var inputId = int.Parse(Console.ReadLine());
 
             if (inputId == 1)
@@ -35,28 +34,65 @@ namespace Restaurant
 
             var chooseTable = _tables.FirstOrDefault(table => table.TableSize == inputId);
 
+            //void ReserveTable(int inputId)
+            //{
 
-            if (chooseTable == null)
+
+            //    if (chooseTable == null)
+            //    {
+            //        _console.WriteLine("Tokio dydzio staliukas neegzistuoja");
+            //        return;
+            //    }
+            //    else if (chooseTable.IsOccupied == true)
+            //    {
+            //        _console.WriteLine("Visi tokio tipo staliukai uzimti, apsilankykite veliau");
+            //        return;
+            //    }
+            //    _console.WriteLine("Prašome prisėsti ir užsisakyti");
+            //    chooseTable.IsOccupied = true;
+            //}
+
+            string ReserveTable(int inputId)
             {
-                Console.WriteLine("Tokio dydzio staliukas neegzistuoja");
-                return;
+                var chooseTable = _tables.FirstOrDefault(table => table.TableSize == inputId);
+
+                if (chooseTable == null)
+                {
+                    return "Tokio dydzio staliukas neegzistuoja";
+                }
+                else if (chooseTable.IsOccupied == true)
+                {
+                    return "Visi tokio tipo staliukai uzimti, apsilankykite veliau";
+                }
+                return "Prašome prisėsti ir užsisakyti";
+                chooseTable.IsOccupied = true;
             }
 
-            else if (chooseTable.IsOccupied == true)
-            {
-                Console.WriteLine("Visi tokio tipo staliukai uzimti, apsilankykite veliau");
-                return;
-            }
-            Console.WriteLine("Prašome prisėsti ir užsisakyti");
 
-            chooseTable.IsOccupied = true;
+            //var chooseTable = _tables.FirstOrDefault(table => table.TableSize == inputId);
+
+
+            //if (chooseTable == null)
+            //{
+            //    _console.WriteLine("Tokio dydzio staliukas neegzistuoja");
+            //    return;
+            //}
+
+            //else if (chooseTable.IsOccupied == true)
+            //{
+            //    _console.WriteLine("Visi tokio tipo staliukai uzimti, apsilankykite veliau");
+            //    return;
+            //}
+            //_console.WriteLine("Prašome prisėsti ir užsisakyti");
+
+            //chooseTable.IsOccupied = true;
 
             //================================================================================//
-            Console.WriteLine("Galimi pasirinkimai:");
-            Console.WriteLine("1 - Rinktis gėrimą");
-            Console.WriteLine("2 - Rinktis maistą");
-            Console.WriteLine("3 - Apmokėti");
-            Console.WriteLine("4 - Išeiti");
+            _console.WriteLine("Galimi pasirinkimai:");
+            _console.WriteLine("1 - Rinktis gėrimą");
+            _console.WriteLine("2 - Rinktis maistą");
+            _console.WriteLine("3 - Apmokėti");
+            _console.WriteLine("4 - Išeiti");
 
             var newOrder = new Order
             {
@@ -64,18 +100,18 @@ namespace Restaurant
             };
             while (true)
             {
-                Console.WriteLine("Pasirinkite veiksmą");
+                _console.WriteLine("Pasirinkite veiksmą");
                 var userInputChoice = int.Parse(Console.ReadLine());
 
                 switch (userInputChoice)
                 {
                     case 1:
-                        Console.WriteLine("Galimi pasirinkimai:");
-                        Console.WriteLine("1 - CocaCola 0.5l, 1.50e");
-                        Console.WriteLine("2 - Pepsi 0.5l, 1.50e");
-                        Console.WriteLine("3 - Sprite 0.5l, 1.50e");
-                        Console.WriteLine("4 - Vilnelė 0.5l, 2.50e");
-                        Console.WriteLine("5 - Išeiti");
+                        _console.WriteLine("Galimi pasirinkimai:");
+                        _console.WriteLine("1 - CocaCola 0.5l, 1.50e");
+                        _console.WriteLine("2 - Pepsi 0.5l, 1.50e");
+                        _console.WriteLine("3 - Sprite 0.5l, 1.50e");
+                        _console.WriteLine("4 - Vilnelė 0.5l, 2.50e");
+                        _console.WriteLine("5 - Išeiti");
 
                         int input = int.Parse(Console.ReadLine());
                         var chooseDrink = _drinks.FirstOrDefault(drinks => drinks.Id == input);
@@ -154,19 +190,13 @@ namespace Restaurant
                             Console.WriteLine("4 - Išeiti");
                             break;
                         }
-
-
                         newOrder.FullOrder.Add(chooseFood);
                         break;
                     case 3:
-
-                        newOrder.PrintOrderDetails(_console);
-
-
-                        break;
-
+                       newOrder.PrintOrderDetails(_console);
+                       newOrder.IsValidEmail();
+                        return;
                     case 4:
-
                         return;
                     default:
                         Console.WriteLine("Pasirinkimas nerastas");
